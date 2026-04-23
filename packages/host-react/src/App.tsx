@@ -2,9 +2,12 @@ import React from 'react';
 import { WebComponentWrapper } from '../../fb-ui-library/src/loadRemoteWebComponent';
 
 export default function App() {
+  const env = (import.meta as any).env ?? {};
   const remoteButtonUrl =
-    (import.meta as any).env?.VITE_REMOTE_BUTTON_URL ||
-    'http://localhost:5175/dist/remote-button.es.js';
+    env.VITE_REMOTE_BUTTON_URL ||
+    (env.DEV
+      ? 'http://localhost:5175/dist/remote-button.es.js'
+      : 'https://eddysocarras777.github.io/webcomponent-monorepo/remote-button.es.js');
 
   const handleRemoteClick = (e: Event) => {
     const detail = (e as CustomEvent).detail;
