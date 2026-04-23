@@ -34,7 +34,6 @@ export function RemoteButtonReact({
         alignItems: 'center',
         gap: 6,
         lineHeight: 1,
-        textTransform: 'uppercase',
       }}
     >
       <svg

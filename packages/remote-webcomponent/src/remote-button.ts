@@ -39,7 +39,6 @@ export class RemoteButton extends LitElement {
       align-items: center;
       gap: 6px;
       line-height: 1;
-      text-transform: uppercase;
     }
 
     .button-icon {
