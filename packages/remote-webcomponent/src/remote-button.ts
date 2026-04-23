@@ -47,6 +47,11 @@ export class RemoteButton extends LitElement {
       flex: 0 0 auto;
       display: block;
     }
+
+    h3 {
+      margin: 0;
+      text-align: center;
+    }
   `;
 
   static readonly properties = {
