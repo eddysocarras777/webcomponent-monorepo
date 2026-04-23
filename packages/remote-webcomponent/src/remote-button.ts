@@ -35,6 +35,17 @@ export class RemoteButton extends LitElement {
       border-radius: 6px;
       border: none;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+    }
+
+    .button-icon {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      display: block;
     }
   `;
 
@@ -44,7 +55,7 @@ export class RemoteButton extends LitElement {
   };
 
   label = 'Remote Button Lit';
-  color = '#1976d2';
+  color = '#f82727';
 
   private reactRoot: Root | null = null;
 
@@ -150,6 +161,18 @@ export class RemoteButton extends LitElement {
     return html`
       <h3 style="color:${this.color};">Web Component</h3>
       <button style="background:${this.color}; color: white;" @click=${this.onLitClick}>
+        <svg
+          class="button-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.441 2L5.19 12.147h4.295L8.854 22 16.81 10.706h-4.387L12.441 2Z"
+            fill="currentColor"
+          />
+        </svg>
         ${this.label}
       </button>
       <div data-react-button-root></div>
