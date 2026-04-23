@@ -148,7 +148,7 @@ export class RemoteButton extends LitElement {
    */
   render() {
     return html`
-      <h3 style="color:${this.color};">Lit - ReactJS Web Component</h3>
+      <h3 style="color:${this.color};">Web Component</h3>
       <button style="background:${this.color}; color: white;" @click=${this.onLitClick}>
         ${this.label}
       </button>
