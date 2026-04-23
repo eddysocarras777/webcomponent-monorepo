@@ -1,3 +1,5 @@
+import React from 'react';
+
 type RemoteButtonReactProps = Readonly<{
     label?: string;
     color?: string;
