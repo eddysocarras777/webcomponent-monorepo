@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/remote-button.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Web component remoto que expone un boton Lit y un boton React para integraciones host.",
+          "name": "RemoteButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "default": "css` :host { display: inline-flex; flex-direction: column; gap: 12px; font-family: system-ui, Arial; } button { padding: 8px 12px; font-size: 14px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; line-height: 1; } .button-icon { width: 14px; height: 14px; flex: 0 0 auto; display: block; } h3 { margin: 0; text-align: center; } `"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "type": {
+                "text": "object"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "{ label: { type: String }, color: { type: String }, }"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Remote Button Lit'",
+              "description": "Texto visible del boton Lit renderizado por el componente."
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#f82727'",
+              "description": "Color principal aplicado al titulo y al boton Lit."
+            },
+            {
+              "kind": "field",
+              "name": "reactRoot",
+              "type": {
+                "text": "Root | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "dispatchRemoteClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "source",
+                  "type": {
+                    "text": "'lit' | 'react'"
+                  },
+                  "description": "Origen del clic que disparó el evento."
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onLitClick",
+              "privacy": "private",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onReactClick",
+              "privacy": "private",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderReactButton",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "firstUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "render",
+              "return": {
+                "type": {
+                  "text": "TemplateResult"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "remote-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Se emite cuando cualquiera de los dos botones es presionado."
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "remote-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "RemoteButton",
+          "declaration": {
+            "name": "RemoteButton",
+            "module": "src/remote-button.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "remote-button",
+          "declaration": {
+            "name": "RemoteButton",
+            "module": "src/remote-button.ts"
+          }
+        }
+      ]
+    }
+  ]
+}

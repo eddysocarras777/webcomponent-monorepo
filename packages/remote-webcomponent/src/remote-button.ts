@@ -21,6 +21,12 @@ function formatDateTime(date: Date) {
   return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 }
 
+/**
+ * Web component remoto que expone un boton Lit y un boton React para integraciones host.
+ *
+ * @tag remote-button
+ * @fires remote-click Se emite cuando cualquiera de los dos botones es presionado.
+ */
 export class RemoteButton extends LitElement {
   static readonly styles = css`
     :host {
@@ -59,7 +65,10 @@ export class RemoteButton extends LitElement {
     color: { type: String },
   };
 
+  /** Texto visible del boton Lit renderizado por el componente. */
   label = 'Remote Button Lit';
+
+  /** Color principal aplicado al titulo y al boton Lit. */
   color = '#f82727';
 
   private reactRoot: Root | null = null;
