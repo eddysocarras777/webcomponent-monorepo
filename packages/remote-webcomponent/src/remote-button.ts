@@ -3,6 +3,13 @@ import { createRoot, type Root } from 'react-dom/client';
 import { LitElement, html, css } from 'lit';
 import { RemoteButtonReact } from './remote-button-react';
 
+type RemoteClickSource = 'lit' | 'react';
+
+type RemoteClickDetail = {
+  time: string;
+  source: RemoteClickSource;
+};
+
 /**
  * @name formatDateTime
  * @description Convierte una fecha en una cadena legible con formato `dd/mm/yyyy hh:mm:ss`.
@@ -24,8 +31,11 @@ function formatDateTime(date: Date) {
 /**
  * Web component remoto que expone un boton Lit y un boton React para integraciones host.
  *
+ * @summary Registra el tag `remote-button` y emite un evento con la fecha y el origen del clic.
  * @tag remote-button
- * @fires remote-click Se emite cuando cualquiera de los dos botones es presionado.
+ * @attr {string} label Texto del boton Lit que se renderiza en el shadow DOM.
+ * @attr {string} color Color principal usado en el titulo y en el boton Lit.
+ * @fires remote-click - Se emite cuando cualquiera de los dos botones es presionado.
  */
 export class RemoteButton extends LitElement {
   static readonly styles = css`
@@ -76,14 +86,19 @@ export class RemoteButton extends LitElement {
   /**
    * @name dispatchRemoteClick
    * @description Emite un evento personalizado con la fecha y el origen del clic dentro del Web Component.
-   * @param {'lit' | 'react'} source Origen del clic que disparó el evento.
+   * @param {RemoteClickSource} source Origen del clic que disparó el evento.
    * @returns {void} No retorna ningún valor.
    * @remarks El evento se publica con `bubbles` y `composed` para que el host pueda escucharlo fuera del shadow DOM.
    */
-  private dispatchRemoteClick(source: 'lit' | 'react') {
+  private dispatchRemoteClick(source: RemoteClickSource) {
+    const detail: RemoteClickDetail = {
+      time: formatDateTime(new Date()),
+      source,
+    };
+
     this.dispatchEvent(
-      new CustomEvent('remote-click', {
-        detail: { time: formatDateTime(new Date()), source },
+      new CustomEvent<RemoteClickDetail>('remote-click', {
+        detail,
         bubbles: true,
         composed: true,
       }),

@@ -63,7 +63,7 @@
                 {
                   "name": "source",
                   "type": {
-                    "text": "'lit' | 'react'"
+                    "text": "RemoteClickSource"
                   },
                   "description": "Origen del clic que disparó el evento."
                 }
@@ -143,12 +143,29 @@
               "description": "Se emite cuando cualquiera de los dos botones es presionado."
             }
           ],
+          "attributes": [
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Texto del boton Lit que se renderiza en el shadow DOM.",
+              "name": "label"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Color principal usado en el titulo y en el boton Lit.",
+              "name": "color"
+            }
+          ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
           "tagName": "remote-button",
-          "customElement": true
+          "customElement": true,
+          "summary": "Registra el tag `remote-button` y emite un evento con la fecha y el origen del clic."
         }
       ],
       "exports": [

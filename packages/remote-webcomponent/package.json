@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "prebuild": "pnpm run build:manifest",
     "build": "vite build",
     "build:manifest": "cem analyze",
     "preview": "vite preview"
