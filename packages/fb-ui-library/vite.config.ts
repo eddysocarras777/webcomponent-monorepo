@@ -6,7 +6,11 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: 'fb_ui_library',
-      fileName: 'fb-ui-library',
+      formats: ['es'],
+      fileName: () => 'index.js',
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
     },
   },
   server: { port: 5176 },

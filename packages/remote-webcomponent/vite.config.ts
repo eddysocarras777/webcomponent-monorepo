@@ -11,5 +11,8 @@ export default defineConfig({
       fileName: () => 'remote-button.es.js',
     },
   },
-  server: { port: 5175 },
+  server: {
+    cors: true,
+    port: 5175,
+  },
 });

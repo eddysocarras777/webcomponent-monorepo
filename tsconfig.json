@@ -1,0 +1,8 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/fb-ui-library" },
+    { "path": "./packages/host-react" },
+    { "path": "./packages/remote-webcomponent" }
+  ]
+}

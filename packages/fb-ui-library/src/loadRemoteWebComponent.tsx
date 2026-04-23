@@ -8,6 +8,13 @@ type WebComponentWrapperProps = Readonly<{
   fallback?: React.ReactNode;
 }>;
 
+/**
+ * @name injectModuleScript
+ * @description Inserta un script ESM remoto en el documento para registrar el Web Component antes de renderizarlo.
+ * @param {string} url URL absoluta del módulo remoto que se debe cargar.
+ * @returns {Promise<void>} Promesa que se resuelve cuando el script termina de cargar.
+ * @throws {Error} Lanza un error si el navegador no puede cargar el módulo remoto.
+ */
 function injectModuleScript(url: string) {
   return new Promise<void>((resolve, reject) => {
     if (document.querySelector(`script[type="module"][src="\${url}"]`)) return resolve();
@@ -19,6 +26,14 @@ function injectModuleScript(url: string) {
     document.head.appendChild(script);
   });
 }
+
+/**
+ * @name WebComponentWrapper
+ * @description Renderiza un custom element dentro de React, cargando primero su módulo remoto y sincronizando props y eventos.
+ * @param {WebComponentWrapperProps} props Propiedades necesarias para identificar el tag, la URL del módulo, atributos y listeners.
+ * @returns {React.ReactElement | null} El Web Component renderizado, un fallback temporal o un mensaje de error.
+ * @remarks Este wrapper asigna propiedades directamente al elemento cuando es posible y usa atributos como fallback.
+ */
 export function WebComponentWrapper({
   tag,
   url,
