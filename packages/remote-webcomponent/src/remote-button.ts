@@ -3,6 +3,17 @@ import { createRoot, type Root } from 'react-dom/client';
 import { LitElement, html, css } from 'lit';
 import { RemoteButtonReact } from './remote-button-react';
 
+function formatDateTime(date: Date) {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+
+  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+}
+
 export class RemoteButton extends LitElement {
   static readonly styles = css`
     :host {
@@ -33,7 +44,7 @@ export class RemoteButton extends LitElement {
   private dispatchRemoteClick(source: 'lit' | 'react') {
     this.dispatchEvent(
       new CustomEvent('remote-click', {
-        detail: { time: Date.now(), source },
+        detail: { time: formatDateTime(new Date()), source },
         bubbles: true,
         composed: true,
       }),
